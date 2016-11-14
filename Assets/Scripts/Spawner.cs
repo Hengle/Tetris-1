@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using com.tinylabproductions.TLPLib.Functional;
 
 public class Spawner : MonoBehaviour
 {
@@ -7,11 +8,6 @@ public class Spawner : MonoBehaviour
     // Groups
     public GameObject[] groups;
 
-    void Start()
-    {
-        // Spawn initial Group
-        spawnNext();
-    }
 
     public void spawnNext()
     {
@@ -23,4 +19,5 @@ public class Spawner : MonoBehaviour
                     transform.position,
                     Quaternion.identity);
     }
-}   
+
+}

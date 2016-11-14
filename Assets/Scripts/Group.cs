@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using com.tinylabproductions.TLPLib.Components.Interfaces;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 
-public class Group : MonoBehaviour {
+public class Group : MonoBehaviour, IMB_Awake {
 
     float lastFall = 0;
+    private float fallSpeed = 1;
+
+
+    public void Awake()
+    {
+        foreach (var MatchController in MatchController.instance)
+        {
+            fallSpeed = MatchController.fallSpeed;
+        }
+    }
 
     // Use this for initialization
     void Start()
@@ -67,7 +78,7 @@ public class Group : MonoBehaviour {
 
         // Move Downwards and Fall
         else if (Input.GetKey(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= 0.5)
+                 Time.time - lastFall >= fallSpeed)
         {
             // Modify position
             transform.position += new Vector3(0, -1, 0);
@@ -136,6 +147,4 @@ public class Group : MonoBehaviour {
             Grid.grid[(int)v.x, (int)v.y] = child.some();
         }
     }
-
-
 }

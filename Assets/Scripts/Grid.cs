@@ -75,4 +75,12 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+    public static void clearAll()
+    {
+        for (int y = 0; y < h; ++y)
+        {
+            deleteRow(y);
+        }
+    }
 }

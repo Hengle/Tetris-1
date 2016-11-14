@@ -1,5 +1,5 @@
 ********************************************************************************
-*                    Monday, November 14, 2016 12:09:39 PM                     *
+*                     Monday, November 14, 2016 6:12:17 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -11,7 +11,7 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-76a830b2250e4044e8b80ecbc935cada 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-0d2dc51bf247c5e4eaa8ba986d699b3c 
 Exit code: 0
 Elapsed time: 3.10 sec
 
@@ -28,7 +28,7 @@ Elapsed time: 0.13 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                    Monday, November 14, 2016 12:09:43 PM                     *
+*                     Monday, November 14, 2016 6:12:21 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -40,9 +40,9 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-a66a33bf82e8c564a9286e30753e29d4 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-824caf1571bdeb040b93671a01373b61 
 Exit code: 0
-Elapsed time: 2.47 sec
+Elapsed time: 2.36 sec
 
 - Compiler output (0 lines):
 
@@ -53,11 +53,11 @@ Elapsed time: 2.47 sec
 Process: D:\Development\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor.dll
 Exit code: 0
-Elapsed time: 0.27 sec
+Elapsed time: 0.13 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                    Monday, November 14, 2016 12:09:44 PM                     *
+*                     Monday, November 14, 2016 6:13:05 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -69,9 +69,9 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-6f64194fb8f64a64485992c887ed983b 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-67cf2d19e71b72d46a998049ddc6abf8 
 Exit code: 0
-Elapsed time: 3.04 sec
+Elapsed time: 3.18 sec
 
 - Compiler output (0 lines):
 
@@ -82,11 +82,11 @@ Elapsed time: 3.04 sec
 Process: D:\Development\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp.dll
 Exit code: 0
-Elapsed time: 0.12 sec
+Elapsed time: 0.13 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                    Monday, November 14, 2016 12:09:47 PM                     *
+*                     Monday, November 14, 2016 6:13:08 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -98,7 +98,7 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-4aac8deb8a6ab1243936d97e7f9ee3a7 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-34c3d3cf492257a4799497a7a6248715 
 Exit code: 0
 Elapsed time: 2.41 sec
 
@@ -112,63 +112,5 @@ Process: D:\Development\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor.dll
 Exit code: 0
 Elapsed time: 0.13 sec
-
-- pdb2mdb.exe output (0 lines):
-********************************************************************************
-*                    Monday, November 14, 2016 12:14:13 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.0.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Development\Tetris
-Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
-Compiler: Microsoft C# 6.0
-
-- Compilation -----------------------------------------------
-
-Process: D:\Development\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-be9780871b3141141ab04dcb9cf0194c 
-Exit code: 0
-Elapsed time: 2.92 sec
-
-- Compiler output (0 lines):
-
-- Compiler errors (0 lines):
-
-- PDB to MDB conversion --------------------------------------
-
-Process: D:\Development\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
-Arguments: Temp\Assembly-CSharp.dll
-Exit code: 0
-Elapsed time: 0.13 sec
-
-- pdb2mdb.exe output (0 lines):
-********************************************************************************
-*                    Monday, November 14, 2016 12:14:17 PM                     *
-********************************************************************************
-CSharpCompilerWrapper.exe version: 2.0.0.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Development\Tetris
-Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
-Compiler: Microsoft C# 6.0
-
-- Compilation -----------------------------------------------
-
-Process: D:\Development\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-239e82a138276be4baecef4bc93455eb 
-Exit code: 0
-Elapsed time: 2.26 sec
-
-- Compiler output (0 lines):
-
-- Compiler errors (0 lines):
-
-- PDB to MDB conversion --------------------------------------
-
-Process: D:\Development\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
-Arguments: Temp\Assembly-CSharp-Editor.dll
-Exit code: 0
-Elapsed time: 0.14 sec
 
 - pdb2mdb.exe output (0 lines):

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using com.tinylabproductions.TLPLib.Extensions;
+using com.tinylabproductions.TLPLib.Functional;
 
 public class Group : MonoBehaviour {
 
@@ -64,8 +66,8 @@ public class Group : MonoBehaviour {
         }
 
         // Move Downwards and Fall
-        else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= 1)
+        else if (Input.GetKey(KeyCode.DownArrow) ||
+                 Time.time - lastFall >= 0.5)
         {
             // Modify position
             transform.position += new Vector3(0, -1, 0);
@@ -93,6 +95,7 @@ public class Group : MonoBehaviour {
 
             lastFall = Time.time;
         }
+
     }
 
     bool isValidGridPos()
@@ -105,10 +108,11 @@ public class Group : MonoBehaviour {
             if (!Grid.insideBorder(v))
                 return false;
 
-            // Block in grid cell (and not part of same group)?
-            if (Grid.grid[(int)v.x, (int)v.y] != null &&
-                Grid.grid[(int)v.x, (int)v.y].parent != transform)
-                return false;
+            // Block in grid cell (and not part of same group)?'
+            foreach (var cell in Grid.grid[(int)v.x, (int)v.y])
+            {
+                if (cell.parent != transform) return false;
+            }
         }
         return true;
     }
@@ -118,15 +122,18 @@ public class Group : MonoBehaviour {
         // Remove old children from grid
         for (int y = 0; y < Grid.h; ++y)
             for (int x = 0; x < Grid.w; ++x)
-                if (Grid.grid[x, y] != null)
-                    if (Grid.grid[x, y].parent == transform)
-                        Grid.grid[x, y] = null;
+                foreach (var cell in Grid.grid[x, y])
+                {
+                    if (cell.parent == transform)
+                        Grid.grid[x,y] = Grid.CellNone;
+                }
+
 
         // Add new children to grid
         foreach (Transform child in transform)
         {
             Vector2 v = Grid.roundVec2(child.position);
-            Grid.grid[(int)v.x, (int)v.y] = child;
+            Grid.grid[(int)v.x, (int)v.y] = child.some();
         }
     }
 

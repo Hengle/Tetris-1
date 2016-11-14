@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using com.tinylabproductions.TLPLib.Functional;
 
 public class Grid : MonoBehaviour
 {
     // The Grid itself
     public static int w = 10;
     public static int h = 20;
-    public static Transform[,] grid = new Transform[w, h];
+    public static Option<Transform>[,] grid = new Option<Transform>[w, h];
+
+    public static Option<Transform> CellNone = Option<Transform>.None;
 
     public static Vector2 roundVec2(Vector2 v)
     {
@@ -25,8 +28,8 @@ public class Grid : MonoBehaviour
     {
         for (int x = 0; x < w; ++x)
         {
-            Destroy(grid[x, y].gameObject);
-            grid[x, y] = null;
+            foreach (var cell in grid[x,y] ) Destroy(cell.gameObject);
+            grid[x, y] = CellNone;
         }
     }
 
@@ -34,14 +37,14 @@ public class Grid : MonoBehaviour
     {
         for (int x = 0; x < w; ++x)
         {
-            if (grid[x, y] != null)
+            if (grid[x, y] != CellNone)
             {
                 // Move one towards bottom
                 grid[x, y - 1] = grid[x, y];
-                grid[x, y] = null;
+                grid[x, y] = CellNone;
 
                 // Update Block position
-                grid[x, y - 1].position += new Vector3(0, -1, 0);
+                foreach (var cell in grid[x,y-1]) cell.position += new Vector3(0,-1,0);
             }
         }
     }
@@ -55,7 +58,7 @@ public class Grid : MonoBehaviour
     public static bool isRowFull(int y)
     {
         for (int x = 0; x < w; ++x)
-            if (grid[x, y] == null)
+            if (grid[x, y] == CellNone)
                 return false;
         return true;
     }

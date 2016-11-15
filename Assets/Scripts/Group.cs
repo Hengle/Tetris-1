@@ -93,12 +93,22 @@ public class Group : MonoBehaviour, IMB_Awake {
             {
                 // It's not valid. revert.
                 transform.position += new Vector3(0, 1, 0);
+                
+                // Finnish the game if a piece is in an invalid position
+                if (!isValidGridPos())
+                {
+                    Debug.Log("GAME OVER");
+                    Destroy(gameObject);
+                }
 
                 // Clear filled horizontal lines
                 Grid.deleteFullRows();
 
                 // Spawn next Group
-                FindObjectOfType<Spawner>().spawnNext();
+                foreach (var spawner in Spawner.instance)
+                {
+                    spawner.spawnNext();
+                }
 
                 // Disable script
                 enabled = false;
@@ -106,7 +116,6 @@ public class Group : MonoBehaviour, IMB_Awake {
 
             lastFall = Time.time;
         }
-
     }
 
     bool isValidGridPos()
@@ -147,4 +156,5 @@ public class Group : MonoBehaviour, IMB_Awake {
             Grid.grid[(int)v.x, (int)v.y] = child.some();
         }
     }
+
 }

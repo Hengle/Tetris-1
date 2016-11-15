@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
 using com.tinylabproductions.TLPLib.Components.Interfaces;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
+using UnityEngine.SocialPlatforms;
 
 public class Group : MonoBehaviour, IMB_Awake {
 
     float lastFall = 0;
     private float fallSpeed = 1;
     private IScore score;
+    private IFakeLeaderboard<int> leaderboard;
 
     public void Awake()
     {
@@ -16,6 +19,7 @@ public class Group : MonoBehaviour, IMB_Awake {
         {
             fallSpeed = matchController.fallSpeed;
             score = matchController;
+            leaderboard = matchController;
         }
     }
 
@@ -26,7 +30,10 @@ public class Group : MonoBehaviour, IMB_Awake {
         if (!isValidGridPos())
         {
             Debug.Log("GAME OVER");
-            Destroy(gameObject);
+            foreach (var matchController in MatchController.instance)
+            {
+                matchController.GameOver();
+            }
         }
     }
 
@@ -99,7 +106,10 @@ public class Group : MonoBehaviour, IMB_Awake {
                 if (!isValidGridPos())
                 {
                     Debug.Log("GAME OVER");
-                    Destroy(gameObject);
+                    foreach (var matchController in MatchController.instance)
+                    {
+                        matchController.GameOver();
+                    }
                 }
 
                 // Clear filled horizontal lines

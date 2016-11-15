@@ -13,7 +13,11 @@ public class UIController : MonoBehaviour, IMB_Awake
     public GameObject Spawner;
     public GameObject GameUI;
     public GameObject Continue;
+
     public Text scoreCounter;
+    public Text leaderboards;
+
+    public Leaderboards leaderboardData;
 
     public void Awake()
     {
@@ -47,6 +51,11 @@ public class UIController : MonoBehaviour, IMB_Awake
 	        }
 
 	        scoreCounter.text = matchController.GetScore().ToString();
+	    }
+
+	    if (leaderboards.IsActive())
+	    {
+	        leaderboards.text = leaderboardData.LeaderboardsToString();
 	    }
     }
 

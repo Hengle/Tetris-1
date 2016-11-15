@@ -4,14 +4,21 @@ using com.tinylabproductions.TLPLib.Components.Interfaces;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 using UnityEditor;
+using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : MonoBehaviour, IMB_Awake
 {
 
     public GameObject Menu;
     public GameObject Spawner;
     public GameObject GameUI;
     public GameObject Continue;
+    public Text scoreCounter;
+
+    public void Awake()
+    {
+
+    }
 
     // Use this for initialization
     void Start () {
@@ -38,6 +45,8 @@ public class UIController : MonoBehaviour
 	        {
 	            Continue.gameObject.SetActive(isPaused);
 	        }
+
+	        scoreCounter.text = matchController.GetScore().ToString();
 	    }
     }
 

@@ -8,13 +8,14 @@ public class Group : MonoBehaviour, IMB_Awake {
 
     float lastFall = 0;
     private float fallSpeed = 1;
-
+    private IScore score;
 
     public void Awake()
     {
-        foreach (var MatchController in MatchController.instance)
+        foreach (var matchController in MatchController.instance)
         {
-            fallSpeed = MatchController.fallSpeed;
+            fallSpeed = matchController.fallSpeed;
+            score = matchController;
         }
     }
 
@@ -102,7 +103,7 @@ public class Group : MonoBehaviour, IMB_Awake {
                 }
 
                 // Clear filled horizontal lines
-                Grid.deleteFullRows();
+                score.AddScore(Grid.deleteFullRows());
 
                 // Spawn next Group
                 foreach (var spawner in Spawner.instance)

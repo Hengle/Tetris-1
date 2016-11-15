@@ -63,8 +63,10 @@ public class Grid : MonoBehaviour
         return true;
     }
 
-    public static void deleteFullRows()
+    public static int deleteFullRows()
     {
+        var accumulator = 0;
+
         for (int y = 0; y < h; ++y)
         {
             if (isRowFull(y))
@@ -72,8 +74,11 @@ public class Grid : MonoBehaviour
                 deleteRow(y);
                 decreaseRowsAbove(y + 1);
                 --y;
+                accumulator++;
             }
         }
+
+        return accumulator;
     }
 
     public static void clearAll()

@@ -5,12 +5,12 @@ using com.tinylabproductions.TLPLib.Components.Interfaces;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 
-public class MatchController : MonoBehaviour, IMB_Awake
+public class MatchController : MonoBehaviour, IMB_Awake, IScore
 {
 
     public static Option<MatchController> instance = Option<MatchController>.None;
     public float fallSpeed = 1;
-    public float score = 0;
+    private int score = 0;
     private List<GameObject> blocks = new List<GameObject>();
     public Option<bool> isPaused = Option<bool>.None;
 
@@ -57,6 +57,8 @@ public class MatchController : MonoBehaviour, IMB_Awake
         {
             spawner.spawnNext();
         }
+
+        score = 0;
     }
 
     public void Pause()
@@ -73,4 +75,13 @@ public class MatchController : MonoBehaviour, IMB_Awake
         isPaused = false.some();
     }
 
+    public int GetScore()
+    {
+        return this.score;
+    }
+
+    public void AddScore(int score)
+    {
+        this.score += score*100;
+    }
 }

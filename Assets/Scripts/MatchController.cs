@@ -29,7 +29,9 @@ public class MatchController : MonoBehaviour
     }
 
     public void SpawnNext() {
-        blocks.Add(spawner.spawnNext(this,score));
+        blocks.Add(
+            spawner.spawnNext(this,score)
+            );
         isGameOver = false;
         isPaused = false.some();
     }
@@ -55,16 +57,16 @@ public class MatchController : MonoBehaviour
         isGameOver = true;
     }
 
-    public bool isMatchOver()
-    {
+    public bool isMatchOver() {
         return isGameOver;
     }
 
     public void FinishMatch() {
-        leaderboard.AddNewScore(score.GetScore());
+        leaderboard.AddNewScore(
+            score.GetScore()
+            );
 
-        foreach (var block in blocks)
-        {
+        foreach (var block in blocks) {
             Grid.clearAll();
             Destroy(block);
         }

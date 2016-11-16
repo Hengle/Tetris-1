@@ -32,11 +32,9 @@ public class Grid : MonoBehaviour
     public static void decreaseRow(int y) {
         for (int x = 0; x < w; ++x) {
             if (grid[x, y] != Option<Transform>.None) {
-                // Move one towards bottom
                 grid[x, y - 1] = grid[x, y];
                 grid[x, y] = Option<Transform>.None;
 
-                // Update Block position
                 foreach (var cell in grid[x,y-1]) cell.position += new Vector3(0,-1,0);
             }
         }
@@ -71,7 +69,6 @@ public class Grid : MonoBehaviour
             if (isRowFull(y)) accumulator++;
         }
 
-
         return accumulator;
     }
 
@@ -82,7 +79,6 @@ public class Grid : MonoBehaviour
     }
 
     public static void updateGrid(Transform current) {
-        // Remove old children from grid
         for (int y = 0; y < h; ++y)
             for (int x = 0; x < w; ++x)
                 foreach (var cell in grid[x, y]) {
@@ -90,8 +86,6 @@ public class Grid : MonoBehaviour
                         grid[x, y] = Option<Transform>.None;
                 }
 
-
-        // Add new children to grid
         foreach (Transform child in current) {
             Vector2 v = roundVec2(child.position);
             grid[(int)v.x, (int)v.y] = child.some();
@@ -102,11 +96,9 @@ public class Grid : MonoBehaviour
         foreach (Transform child in current) {
             Vector2 v = roundVec2(child.position);
 
-            // Not inside Border?
             if (!insideBorder(v))
                 return false;
 
-            // Block in grid cell (and not part of same group)?'
             foreach (var cell in grid[(int)v.x, (int)v.y]) {
                 if (cell.parent != current) return false;
             }

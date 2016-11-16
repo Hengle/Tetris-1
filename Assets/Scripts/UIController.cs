@@ -26,10 +26,9 @@ public class UIController : MonoBehaviour
         leaderboardData = leaderboard.some();
         scoreData = score.some();
     }
-	// Update is called once per frame
+
 	void Update () {
-	    if (Input.GetKey(KeyCode.Escape))
-	    {
+	    if (Input.GetKey(KeyCode.Escape)) {
 	        Menu.gameObject.SetActive(true);
             GameUI.gameObject.SetActive(false);
             matchController.ToMenu();
@@ -37,36 +36,26 @@ public class UIController : MonoBehaviour
 
 
 	    foreach (var isPaused in matchController.isPaused)
-	    {
             Continue.gameObject.SetActive(isPaused);
-	    }
 
 	    foreach (var leaderboard in leaderboardData)
-	    {
-            if (leaderboards.IsActive())
-            {
+            if (leaderboards.IsActive()) {
                 leaderboards.text = leaderboard.ToString();
             }
-        }
 
 
 	    foreach (var score in scoreData)
-	    {
-            if (scoreCounter.IsActive())
-            {
+            if (scoreCounter.IsActive()) {
                 scoreCounter.text = score.ToString();
             }
-        }
 
     }
 
-    public static void QuitGame()
-    {
+    public static void QuitGame() {
         Application.Quit();
     }
 
-    public void setMatchController(MatchController controller)
-    {
+    public void setMatchController(MatchController controller) {
         matchController = controller;
     }
 

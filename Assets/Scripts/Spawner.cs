@@ -8,21 +8,27 @@ public class Spawner : MonoBehaviour
     // Groups
     public GameObject[] groups;
 
-    public void Initialize(GameObject[] groups)
-    {
+    public void Initialize(GameObject[] groups) {
         this.groups = groups;
     }
 
     public GameObject spawnNext(MatchController controller, IScore score) {
-        // Random Index
-        int i = Random.Range(0, groups.Length);
 
-        // Spawn Group at current Position
-        var group = (GameObject)Instantiate(groups[i],
-                transform.position,
-                Quaternion.identity);
+        int i = Random.Range(
+            0, groups.Length
+            );
 
-        group.GetComponent<Group>().Initialize(controller, score);
+        var group = (GameObject)Instantiate(
+            groups[i],
+            transform.position,
+            Quaternion.identity
+            );
+
+        group.GetComponent<Group>()
+            .Initialize(
+                controller, 
+                score
+                );
 
         return group;
     }

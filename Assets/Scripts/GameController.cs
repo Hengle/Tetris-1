@@ -19,37 +19,39 @@ public class GameController : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 	    currUI = Instantiate(uiControllerPrefab);
-        currUI.Initialize(leaderboardsData,scoreData);
+        currUI.Initialize(
+            leaderboardsData,
+            scoreData
+            );
 
         currMatch = Instantiate(matchControllerPrefab);
-        currMatch.Initialize(leaderboardsData, scoreData, spawnerPosition, pieces);
+        currMatch.Initialize(
+            leaderboardsData, 
+            scoreData, 
+            spawnerPosition, 
+            pieces
+            );
 
         currUI.setMatchController(currMatch);
     }
 
     // Update is called once per frame
-    void Update ()
-	{
+    void Update () {
 	    if (CheckForMatchOver())
-	    {
             currMatch.FinishMatch();
-        }
     }
 
-    public void StartMatch()
-    {
+    public void StartMatch() {
         currMatch.FinishMatch();
 
         currMatch.SpawnNext();
     }
 
-    public void ContinueMatch()
-    {
+    public void ContinueMatch() {
         currMatch.Continue();
     }
 
-    private bool CheckForMatchOver()
-    {
+    private bool CheckForMatchOver() {
         return currMatch.isMatchOver();
     }
 }

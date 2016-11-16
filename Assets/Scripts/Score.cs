@@ -19,13 +19,11 @@ public class Score : MonoBehaviour, IScore
         this.score += score * 100;
     }
 
-    public override string ToString()
-    {
+    public override string ToString() {
         return score.ToString();
     }
 
-    public void Reset()
-    {
+    public void Reset() {
         score = 0;
     }
 }

@@ -8,122 +8,67 @@ using com.tinylabproductions.TLPLib.Functional;
 using UnityEngine.SocialPlatforms;
 using System;
 
-public class MatchController : MonoBehaviour, IMB_Awake, IScore, IFakeLeaderboard<int>
+public class MatchController : MonoBehaviour
 {
-
-    public static Option<MatchController> instance = Option<MatchController>.None;
-    public float fallSpeed = 1;
-
-    private int score = 0;
-
     private List<GameObject> blocks = new List<GameObject>();
-
     public Option<bool> isPaused = Option<bool>.None;
+    private bool isGameOver = false;
+    private IScore score;
+    private IFakeLeaderboard<int> leaderboard;
 
-    private List<int> Leaderboards = new List<int>();
+    private Spawner spawner;
 
-    public void Awake()
-    {
-        if (instance == Option<MatchController>.None)
-        {
-            instance = this.some();
-        }
+    public void Initialize(IFakeLeaderboard<int> leaderboard, IScore score, Vector2 spawnerPos, GameObject[] groups) {
+        this.leaderboard = leaderboard;
+        this.score = score;
 
-        else if (instance != this.some())
-        {
-            Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
-        
+        var spawenerObject = new GameObject();
+        spawner = spawenerObject.AddComponent<Spawner>();
+        spawner.Initialize(groups);
+        spawenerObject.transform.position = spawnerPos;
     }
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-    public void AddGroup(GameObject block)
-    {
-        blocks.Add(block);
-    }
-
-    public void NewMatch()
-    {
-        foreach (var block in blocks)
-        {
-            Grid.clearAll();
-            Destroy(block);
-        }
-
-        foreach (var spawner in Spawner.instance)
-        {
-            spawner.spawnNext();
-        }
-
+    public void SpawnNext() {
+        blocks.Add(spawner.spawnNext(this,score));
+        isGameOver = false;
         isPaused = false.some();
-        AddGameScore(score);
-        score = 0;
     }
 
-    public void Pause()
-    {
-        if (isPaused != Option<bool>.None)
-        {
+    public void ToMenu() {
+        if (isPaused != Option<bool>.None) {
             isPaused = true.some();
             var lastObject = blocks[blocks.Count - 1];
             lastObject.GetComponent<Group>().enabled = false;
         }
     }
 
-    public void Continue()
-    {
+    public void Continue() {
         var lastObject = blocks[blocks.Count - 1];
         lastObject.GetComponent<Group>().enabled = true;
         isPaused = false.some();
     }
 
-    public int GetScore()
-    {
-        return this.score;
+    public void GameOver() {
+        Debug.Log("GAME OVER");
+
+        isPaused = Option<bool>.None;
+        isGameOver = true;
     }
 
-    public void AddScore(int score)
+    public bool isMatchOver()
     {
-        this.score += score*100;
+        return isGameOver;
     }
 
+    public void FinishMatch() {
+        leaderboard.AddNewScore(score.GetScore());
 
-    public List<int> GetLeaderboards()
-    {
-        return this.Leaderboards;
-    }
-
-    public void AddNewScore(int score)
-    {
-        this.Leaderboards.Add(score);
-    }
-
-    public void AddGameScore(int score)
-    {
-        this.Leaderboards.Add(score);
-        this.Leaderboards.Sort((x, y) => y.CompareTo(x));
-    }
-
-    public void GameOver()
-    {
-        AddGameScore(score);
         foreach (var block in blocks)
         {
             Grid.clearAll();
             Destroy(block);
         }
-        
-        isPaused = Option<bool>.None;
+
+        score.Reset();
     }
 }

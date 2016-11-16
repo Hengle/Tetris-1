@@ -5,46 +5,25 @@ using com.tinylabproductions.TLPLib.Functional;
 
 public class Spawner : MonoBehaviour
 {
-    
-    public static Option<Spawner> instance = Option<Spawner>.None;
-
     // Groups
     public GameObject[] groups;
 
-
-    public void spawnNext()
+    public void Initialize(GameObject[] groups)
     {
+        this.groups = groups;
+    }
+
+    public GameObject spawnNext(MatchController controller, IScore score) {
         // Random Index
         int i = Random.Range(0, groups.Length);
 
         // Spawn Group at current Position
-        foreach (var matchController in MatchController.instance)
-        {
-            matchController.AddGroup(
-                (GameObject)Instantiate(groups[i],
-                    transform.position,
-                    Quaternion.identity)
-            );
-        }
-        
+        var group = (GameObject)Instantiate(groups[i],
+                transform.position,
+                Quaternion.identity);
+
+        group.GetComponent<Group>().Initialize(controller, score);
+
+        return group;
     }
-
-    public void Awake()
-    {
-        if (instance == Option<Spawner>.None)
-        {
-            instance = this.some();
-        }
-
-        else if (instance != this.some())
-        {
-            Destroy(gameObject);
-        }
-
-        DontDestroyOnLoad(gameObject);
-
-    }
-
-
-
 }

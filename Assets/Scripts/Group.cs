@@ -6,79 +6,67 @@ using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 using UnityEngine.SocialPlatforms;
 
-public class Group : MonoBehaviour, IMB_Awake {
+public class Group : MonoBehaviour {
 
-    float lastFall = 0;
+    private float lastFall = 0;
     private float fallSpeed = 1;
-    private IScore score;
-    private IFakeLeaderboard<int> leaderboard;
 
-    public void Awake()
+    //Possible change in the future
+    //Different ways to calculate score, different objects to hold it, etc
+    private IScore score;
+    private MatchController matchController;
+
+    public void Initialize(MatchController controller, IScore score)
     {
-        foreach (var matchController in MatchController.instance)
-        {
-            fallSpeed = matchController.fallSpeed;
-            score = matchController;
-            leaderboard = matchController;
-        }
+        matchController = controller;
+        this.score = score;
     }
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
         // Default position not valid? Then it's game over
-        if (!isValidGridPos())
-        {
-            Debug.Log("GAME OVER");
-            foreach (var matchController in MatchController.instance)
-            {
+        if (!Grid.isValidGridPos(transform))
                 matchController.GameOver();
-            }
-        }
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // Move Left
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             // Modify position
             transform.position += new Vector3(-1, 0, 0);
 
             // See if valid
-            if (isValidGridPos())
+            if (Grid.isValidGridPos(transform))
                 // It's valid. Update grid.
-                updateGrid();
+                Grid.updateGrid(transform);
             else
                 // It's not valid. revert.
                 transform.position += new Vector3(1, 0, 0);
         }
 
         // Move Right
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
+        else if (Input.GetKeyDown(KeyCode.RightArrow)) {
             // Modify position
             transform.position += new Vector3(1, 0, 0);
 
             // See if valid
-            if (isValidGridPos())
+            if (Grid.isValidGridPos(transform))
                 // It's valid. Update grid.
-                updateGrid();
+                Grid.updateGrid(transform);
             else
                 // It's not valid. revert.
                 transform.position += new Vector3(-1, 0, 0);
         }
 
         // Rotate
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
+        else if (Input.GetKeyDown(KeyCode.UpArrow)) {
             transform.Rotate(0, 0, -90);
 
             // See if valid
-            if (isValidGridPos())
+            if (Grid.isValidGridPos(transform))
                 // It's valid. Update grid.
-                updateGrid();
+                Grid.updateGrid(transform);
             else
                 // It's not valid. revert.
                 transform.Rotate(0, 0, 90);
@@ -86,85 +74,39 @@ public class Group : MonoBehaviour, IMB_Awake {
 
         // Move Downwards and Fall
         else if (Input.GetKey(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= fallSpeed)
-        {
+                 Time.time - lastFall >= fallSpeed) {
             // Modify position
             transform.position += new Vector3(0, -1, 0);
 
             // See if valid
-            if (isValidGridPos())
-            {
+            if (Grid.isValidGridPos(transform)) {
                 // It's valid. Update grid.
-                updateGrid();
+                Grid.updateGrid(transform);
             }
-            else
-            {
+            else {
                 // It's not valid. revert.
                 transform.position += new Vector3(0, 1, 0);
                 
                 // Finnish the game if a piece is in an invalid position
-                if (!isValidGridPos())
-                {
-                    Debug.Log("GAME OVER");
-                    foreach (var matchController in MatchController.instance)
-                    {
-                        matchController.GameOver();
-                    }
-                }
+                if (!Grid.isValidGridPos(transform)) 
+                    matchController.GameOver();
+                
 
                 // Clear filled horizontal lines
-                score.AddScore(Grid.deleteFullRows());
+                var fullRows = Grid.amountOfFullRows();
+                if (Grid.amountOfFullRows() > 0) {
+                    score.AddScore(fullRows);
+                    Grid.deleteFullRows();
+                }
 
                 // Spawn next Group
-                foreach (var spawner in Spawner.instance)
-                {
-                    spawner.spawnNext();
-                }
+                matchController.SpawnNext();
 
                 // Disable script
                 enabled = false;
             }
 
             lastFall = Time.time;
-        }
-    }
-
-    bool isValidGridPos()
-    {
-        foreach (Transform child in transform)
-        {
-            Vector2 v = Grid.roundVec2(child.position);
-
-            // Not inside Border?
-            if (!Grid.insideBorder(v))
-                return false;
-
-            // Block in grid cell (and not part of same group)?'
-            foreach (var cell in Grid.grid[(int)v.x, (int)v.y])
-            {
-                if (cell.parent != transform) return false;
-            }
-        }
-        return true;
-    }
-
-    void updateGrid()
-    {
-        // Remove old children from grid
-        for (int y = 0; y < Grid.h; ++y)
-            for (int x = 0; x < Grid.w; ++x)
-                foreach (var cell in Grid.grid[x, y])
-                {
-                    if (cell.parent == transform)
-                        Grid.grid[x,y] = Grid.CellNone;
-                }
-
-
-        // Add new children to grid
-        foreach (Transform child in transform)
-        {
-            Vector2 v = Grid.roundVec2(child.position);
-            Grid.grid[(int)v.x, (int)v.y] = child.some();
         }
     }
 

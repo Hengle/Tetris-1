@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    interface IFakeLeaderboard<T>
+    public interface IFakeLeaderboard<T>
     {
         List<T> GetLeaderboards();
         void AddNewScore(T score);

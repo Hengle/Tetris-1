@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 
@@ -10,18 +11,25 @@ public class GameController : MonoBehaviour
     public UIController uiControllerPrefab;
     public GameObject[] pieces;
 
-    public Score scoreData;
-    public Leaderboards leaderboardsData;
+    private IScore scoreData;
+    private IFakeLeaderboard<int> leaderboardsData;
 
     private MatchController currMatch;
     private UIController currUI;
 
 	// Use this for initialization
 	void Start () {
-	    currUI = Instantiate(uiControllerPrefab);
+        scoreData = new Score();
+	    leaderboardsData = new Leaderboards();
+
+	    foreach (var loadedLeaderboard in LeaderboardsDataManager.Load())
+            leaderboardsData.SetLeaderboard(loadedLeaderboard.leaderboard);
+
+        currUI = Instantiate(uiControllerPrefab);
         currUI.Initialize(
             leaderboardsData,
-            scoreData
+            scoreData,
+            this
             );
 
         currMatch = Instantiate(matchControllerPrefab);
@@ -35,14 +43,8 @@ public class GameController : MonoBehaviour
         currUI.setMatchController(currMatch);
     }
 
-    // Update is called once per frame
-    void Update () {
-	    if (CheckForMatchOver())
-            currMatch.FinishMatch();
-    }
-
     public void StartMatch() {
-        currMatch.FinishMatch();
+        currMatch.PrepNewMatch();
 
         currMatch.SpawnNext();
     }
@@ -51,7 +53,8 @@ public class GameController : MonoBehaviour
         currMatch.Continue();
     }
 
-    private bool CheckForMatchOver() {
-        return currMatch.isMatchOver();
+    public void BeforeClosing() {
+        LeaderboardsDataManager.Save((Leaderboards)leaderboardsData);
     }
+
 }

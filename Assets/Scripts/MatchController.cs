@@ -12,7 +12,6 @@ public class MatchController : MonoBehaviour
 {
     private List<GameObject> blocks = new List<GameObject>();
     public Option<bool> isPaused = Option<bool>.None;
-    private bool isGameOver = false;
     private IScore score;
     private IFakeLeaderboard<int> leaderboard;
 
@@ -32,7 +31,6 @@ public class MatchController : MonoBehaviour
         blocks.Add(
             spawner.spawnNext(this,score)
             );
-        isGameOver = false;
         isPaused = false.some();
     }
 
@@ -54,23 +52,22 @@ public class MatchController : MonoBehaviour
         Debug.Log("GAME OVER");
 
         isPaused = Option<bool>.None;
-        isGameOver = true;
-    }
 
-    public bool isMatchOver() {
-        return isGameOver;
-    }
-
-    public void FinishMatch() {
         leaderboard.AddNewScore(
             score.GetScore()
             );
 
+        score.Reset();
+
+        PrepNewMatch();
+    }
+
+
+    public void PrepNewMatch() {
         foreach (var block in blocks) {
             Grid.clearAll();
             Destroy(block);
         }
 
-        score.Reset();
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Score : MonoBehaviour, IScore
+public class Score : IScore
 {
 
     private int score;

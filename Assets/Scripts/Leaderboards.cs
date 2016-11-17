@@ -7,14 +7,9 @@ using Assets.Scripts;
 using com.tinylabproductions.TLPLib.Components.Interfaces;
 using com.tinylabproductions.TLPLib.Extensions;
 
-public class Leaderboards : MonoBehaviour, IMB_Awake, IFakeLeaderboard<int>
-{
-
-    private List<int> leaderboard;
-
-    public void Awake() {
-        leaderboard = new List<int>();
-    }
+[Serializable]
+public class Leaderboards : IFakeLeaderboard<int> {
+    public List<int> leaderboard = new List<int>();
 
     public List<int> GetLeaderboards() {
         return leaderboard;
@@ -30,6 +25,11 @@ public class Leaderboards : MonoBehaviour, IMB_Awake, IFakeLeaderboard<int>
             if (leaderboard.Count > 10)
                 leaderboard.RemoveRange(9, leaderboard.Count - 1); 
         }
+    }
+
+    public void SetLeaderboard(List<int> leaderboard)
+    {
+        this.leaderboard = leaderboard;
     }
 
     public override string ToString() {

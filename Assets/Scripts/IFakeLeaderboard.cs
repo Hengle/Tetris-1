@@ -9,5 +9,6 @@ namespace Assets.Scripts
     {
         List<T> GetLeaderboards();
         void AddNewScore(T score);
+        void SetLeaderboard(List<T> leaderboard);
     }
 }

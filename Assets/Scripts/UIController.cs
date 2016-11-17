@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
-using com.tinylabproductions.TLPLib.Components.Interfaces;
+using Assets.Scripts;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
-using UnityEditor;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -16,15 +14,16 @@ public class UIController : MonoBehaviour
     public Text scoreCounter;
     public Text leaderboards;
 
-    private Option<Leaderboards> leaderboardData;
-    private Option<Score> scoreData;
+    private Option<IFakeLeaderboard<int>> leaderboardData;
+    private Option<IScore> scoreData;
 
     private MatchController matchController;
+    private GameController gameController;
 
-    public void Initialize(Leaderboards leaderboard, Score score)
-    {
+    public void Initialize(IFakeLeaderboard<int> leaderboard, IScore score, GameController gameController) {
         leaderboardData = leaderboard.some();
         scoreData = score.some();
+        this.gameController = gameController;
     }
 
 	void Update () {
@@ -51,12 +50,22 @@ public class UIController : MonoBehaviour
 
     }
 
-    public static void QuitGame() {
+    public void QuitGame() {
+        gameController.BeforeClosing();
         Application.Quit();
     }
 
     public void setMatchController(MatchController controller) {
         matchController = controller;
     }
+
+    public void StartGame() {
+        gameController.StartMatch();
+    }
+
+    public void ContinueGame() {
+        gameController.ContinueMatch();
+    }
+
 
 }

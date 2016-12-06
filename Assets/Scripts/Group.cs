@@ -8,13 +8,13 @@ using UnityEngine.SocialPlatforms;
 
 public class Group : MonoBehaviour {
 
-    private float lastFall = 0;
-    private float fallSpeed = 1;
+    float lastFall = 0;
+    float fallSpeed = 1;
 
     //Possible change in the future
     //Different ways to calculate score, different objects to hold it, etc
-    private IScore score;
-    private MatchController matchController;
+    IScore score;
+    MatchController matchController;
 
     public void Initialize(MatchController controller, IScore score) {
         matchController = controller;

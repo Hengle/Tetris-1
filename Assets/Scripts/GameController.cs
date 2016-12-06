@@ -1,21 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Assets.Scripts;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 
 public class GameController : MonoBehaviour
 {
-    public Vector2 spawnerPosition;
-    public MatchController matchControllerPrefab;
-    public UIController uiControllerPrefab;
-    public GameObject[] pieces;
+    [SerializeField] Vector2 spawnerPosition;
+    [SerializeField] MatchController matchControllerPrefab;
+    [SerializeField] UIController uiControllerPrefab;
+    [SerializeField] List<Group> pieces;
 
-    private IScore scoreData;
-    private IFakeLeaderboard<int> leaderboardsData;
+    IScore scoreData;
+    IFakeLeaderboard<int> leaderboardsData;
 
-    private MatchController currMatch;
-    private UIController currUI;
+    MatchController currMatch;
+    UIController currUI;
 
 	// Use this for initialization
 	void Start () {

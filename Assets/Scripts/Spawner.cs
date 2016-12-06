@@ -1,34 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
+using Smooth.Collections;
 
 public class Spawner : MonoBehaviour
 {
     // Groups
-    public GameObject[] groups;
-
-    public void Initialize(GameObject[] groups) {
+    List<Group> groups;
+    public void Initialize(List<Group> groups) {
         this.groups = groups;
     }
 
-    public GameObject spawnNext(MatchController controller, IScore score) {
+    public Group spawnNext(MatchController controller, IScore score)
+    {
+        var group = Instantiate(groups.Random().get);
+        group.transform.position = transform.position;
 
-        int i = Random.Range(
-            0, groups.Length
-            );
-
-        var group = (GameObject)Instantiate(
-            groups[i],
-            transform.position,
-            Quaternion.identity
-            );
-
-        group.GetComponent<Group>()
-            .Initialize(
-                controller, 
-                score
-                );
+        group.Initialize(
+            controller,
+            score);
 
         return group;
     }

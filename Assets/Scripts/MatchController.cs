@@ -10,14 +10,16 @@ using System;
 
 public class MatchController : MonoBehaviour
 {
-    private List<GameObject> blocks = new List<GameObject>();
-    public Option<bool> isPaused = Option<bool>.None;
-    private IScore score;
-    private IFakeLeaderboard<int> leaderboard;
+    public Option<bool> isPaused { get; private set; }
 
-    private Spawner spawner;
+    List<Group> blocks = new List<Group>();
+    IScore score;
+    IFakeLeaderboard<int> leaderboard;
 
-    public void Initialize(IFakeLeaderboard<int> leaderboard, IScore score, Vector2 spawnerPos, GameObject[] groups) {
+    Spawner spawner;
+
+    public void Initialize(IFakeLeaderboard<int> leaderboard, IScore score, Vector2 spawnerPos, List<Group> groups) {
+        this.isPaused = Option<bool>.None;
         this.leaderboard = leaderboard;
         this.score = score;
 

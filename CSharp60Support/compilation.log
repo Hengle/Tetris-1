@@ -1,5 +1,5 @@
 ********************************************************************************
-*                    Tuesday, December 06, 2016 7:39:29 PM                     *
+*                    Monday, December 12, 2016 10:35:44 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -11,11 +11,25 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-9ad44bb8593fcd440adf78ae638a3207 
-Exit code: 1
-Elapsed time: 1.60 sec
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-96d9a9320219fca40960af942f554d02 
+Exit code: 0
+Elapsed time: 3.02 sec
 
 - Compiler output (0 lines):
 
-- Compiler errors (1 line):
-0: Assets\Scripts\Block.cs(18,15): error CS1002: ; expected
+- Compiler errors (6 lines):
+0: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+1: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+2: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+3: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+4: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.14 sec
+
+- pdb2mdb.exe output (0 lines):

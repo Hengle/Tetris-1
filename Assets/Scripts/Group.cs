@@ -1,10 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Assets.Scripts;
-using com.tinylabproductions.TLPLib.Components.Interfaces;
-using com.tinylabproductions.TLPLib.Extensions;
-using com.tinylabproductions.TLPLib.Functional;
-using UnityEngine.SocialPlatforms;
 
 public class Group : MonoBehaviour {
 

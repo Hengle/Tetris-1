@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using Assets.Scripts;
 using com.tinylabproductions.TLPLib.Extensions;
@@ -8,18 +8,23 @@ using com.tinylabproductions.TLPLib.Functional;
 public class GameController : MonoBehaviour
 {
     [SerializeField] Vector2 spawnerPosition;
-    [SerializeField] MatchController matchControllerPrefab;
+    //[SerializeField] MatchController matchControllerPrefab;
+    [SerializeField] Tetris tetrisPrefab;
     [SerializeField] UIController uiControllerPrefab;
     [SerializeField] List<Group> pieces;
 
     IScore scoreData;
     IFakeLeaderboard<int> leaderboardsData;
 
-    MatchController currMatch;
+    //MatchController currMatch;
     UIController currUI;
+    Tetris currTetris;
+
+    public Option<bool> isPaused { get; private set; }
 
 	// Use this for initialization
 	void Start () {
+
         scoreData = new Score();
 	    leaderboardsData = new Leaderboards();
 
@@ -33,29 +38,39 @@ public class GameController : MonoBehaviour
             this
             );
 
-        currMatch = Instantiate(matchControllerPrefab);
-        currMatch.Initialize(
-            leaderboardsData, 
-            scoreData, 
-            spawnerPosition, 
-            pieces
-            );
+	    currTetris = Instantiate(tetrisPrefab);
+	}
 
-        currUI.setMatchController(currMatch);
+    public void StartGame()
+    {
+        isPaused = false.some();
+        Debug.Log("Begin controller");
+
+        currTetris.Begin();
     }
 
-    public void StartMatch() {
-        currMatch.PrepNewMatch();
+    public void ContinueGame()
+    {
+        isPaused = false.some();
+        Debug.Log("Continue controller");
 
-        currMatch.SpawnNext();
+        currTetris.Continue();
     }
 
-    public void ContinueMatch() {
-        currMatch.Continue();
+    public void PauseMatch()
+    {
+        isPaused = true.some();
+        Debug.Log("Pause controller");
+
+        currTetris.Pause();
     }
 
-    public void BeforeClosing() {
-        LeaderboardsDataManager.Save((Leaderboards)leaderboardsData);
+    public void EndMatch()
+    {
+        isPaused = Option<bool>.None;
+        Debug.Log("End controller");
+
+        currTetris.End();
     }
 
 }

@@ -17,7 +17,6 @@ public class UIController : MonoBehaviour
     private Option<IFakeLeaderboard<int>> leaderboardData;
     private Option<IScore> scoreData;
 
-    private MatchController matchController;
     private GameController gameController;
 
     public void Initialize(IFakeLeaderboard<int> leaderboard, IScore score, GameController gameController) {
@@ -30,11 +29,11 @@ public class UIController : MonoBehaviour
 	    if (Input.GetKey(KeyCode.Escape)) {
 	        Menu.gameObject.SetActive(true);
             GameUI.gameObject.SetActive(false);
-            matchController.ToMenu();
+            gameController.PauseMatch();
 	    }
 
 
-	    foreach (var isPaused in matchController.isPaused)
+	    foreach (var isPaused in gameController.isPaused)
             Continue.gameObject.SetActive(isPaused);
 
 	    foreach (var leaderboard in leaderboardData)
@@ -51,20 +50,16 @@ public class UIController : MonoBehaviour
     }
 
     public void QuitGame() {
-        gameController.BeforeClosing();
+        //gameController.BeforeClosing();
         Application.Quit();
     }
 
-    public void setMatchController(MatchController controller) {
-        matchController = controller;
-    }
-
     public void StartGame() {
-        gameController.StartMatch();
+        gameController.StartGame();
     }
 
     public void ContinueGame() {
-        gameController.ContinueMatch();
+        gameController.ContinueGame();
     }
 
 

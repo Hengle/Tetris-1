@@ -1,5 +1,36 @@
 ********************************************************************************
-*                    Tuesday, December 27, 2016 7:32:42 PM                     *
+*                     Friday, December 30, 2016 7:45:08 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-firstpass.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-5149b5545d6b2024aabf2d79f7ca3ebb 
+Exit code: 0
+Elapsed time: 4.63 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (2 lines):
+0: Assets\Plugins\Vendor\TLPLib\Extensions\BuildTargetExts.cs(39,14): warning CS0618: 'BuildTarget.WebPlayer' is obsolete: 'WebPlayer has been removed in 5.4'
+1: Assets\Plugins\Vendor\TLPLib\Extensions\BuildTargetExts.cs(40,14): warning CS0618: 'BuildTarget.WebPlayerStreamed' is obsolete: 'WebPlayerStreamed has been removed in 5.4'
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-firstpass.dll
+Exit code: 0
+Elapsed time: 0.36 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:45:14 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -11,32 +42,61 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-e7b4a70d6d0faa549b4f3cdf7be3640a 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-fc61f56f9d1f518488398f7d6da74c21 
 Exit code: 0
-Elapsed time: 3.13 sec
+Elapsed time: 3.87 sec
 
 - Compiler output (0 lines):
 
 - Compiler errors (8 lines):
-0: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
-1: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
-2: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
-3: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
-4: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+0: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+1: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+2: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+3: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+4: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
 5: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
-6: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
-7: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+6: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
 
 - PDB to MDB conversion --------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp.dll
 Exit code: 0
-Elapsed time: 0.25 sec
+Elapsed time: 0.15 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                    Tuesday, December 27, 2016 7:32:46 PM                     *
+*                     Friday, December 30, 2016 7:45:14 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor-firstpass.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-8973a4d39debbe542b9d27da811bdd2d 
+Exit code: 0
+Elapsed time: 3.97 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor-firstpass.dll
+Exit code: 0
+Elapsed time: 0.18 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:45:19 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -48,9 +108,9 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-0436b467dad1d414c9e695a19c091d8f 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-2559e58b51d1a6b4cb7d3de0a57a13d1 
 Exit code: 0
-Elapsed time: 2.15 sec
+Elapsed time: 2.41 sec
 
 - Compiler output (0 lines):
 
@@ -61,11 +121,11 @@ Elapsed time: 2.15 sec
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor.dll
 Exit code: 0
-Elapsed time: 0.20 sec
+Elapsed time: 0.13 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                    Tuesday, December 27, 2016 7:35:49 PM                     *
+*                     Friday, December 30, 2016 7:46:49 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -77,32 +137,32 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-c19c900b2774b0343a824233e3c4fec3 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-0df3c47e614d93f4ab2554dc7ca256a5 
 Exit code: 0
-Elapsed time: 2.77 sec
+Elapsed time: 3.09 sec
 
 - Compiler output (0 lines):
 
 - Compiler errors (8 lines):
-0: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
-1: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
-2: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
-3: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
-4: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
-5: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
-6: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
-7: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+0: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+1: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+2: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+3: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+4: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+5: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+6: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+7: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
 
 - PDB to MDB conversion --------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp.dll
 Exit code: 0
-Elapsed time: 0.23 sec
+Elapsed time: 0.13 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                    Tuesday, December 27, 2016 7:35:53 PM                     *
+*                     Friday, December 30, 2016 7:46:53 PM                     *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -114,7 +174,396 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-8b6328b724fe7a548bf46397100ad61c 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-3f0f7c8e4d3be5d4498eab136ca2f220 
+Exit code: 0
+Elapsed time: 2.45 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.13 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:48:36 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-50b8d3560bd996845ad91e81072063a5 
+Exit code: 0
+Elapsed time: 3.00 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (8 lines):
+0: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+1: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+3: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+4: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+6: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.14 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:48:40 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-8338d74c7fc8acd4ca370dcd6c09b341 
+Exit code: 0
+Elapsed time: 2.34 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.13 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:51:41 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-2e13f325dcbb6ff45b9738c070d24645 
+Exit code: 1
+Elapsed time: 2.45 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (9 lines):
+0: Assets\Scripts\Tetris.cs(76,20): error CS0122: 'TetrisGrid.ClearGrid()' is inaccessible due to its protection level
+1: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+2: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+3: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+4: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+6: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+8: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+********************************************************************************
+*                     Friday, December 30, 2016 7:52:43 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-6bcbb645aa5b676479241e6153ca3160 
+Exit code: 0
+Elapsed time: 3.00 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (8 lines):
+0: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+1: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+2: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+3: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+4: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+6: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.13 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:52:47 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-30f748b1886cd214eb9a9976ac41fb3b 
+Exit code: 0
+Elapsed time: 2.33 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.12 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:55:22 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-a0a9ca974f061cd4cb1d663fbc50fbfd 
+Exit code: 1
+Elapsed time: 2.45 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (10 lines):
+0: Assets\Scripts\Tetris.cs(60,20): error CS1061: 'TetrisGrid' does not contain a definition for 'PrepareGrid' and no extension method 'PrepareGrid' accepting a first argument of type 'TetrisGrid' could be found (are you missing a using directive or an assembly reference?)
+1: Assets\Scripts\Tetris.cs(76,20): error CS1061: 'TetrisGrid' does not contain a definition for 'PrepareGrid' and no extension method 'PrepareGrid' accepting a first argument of type 'TetrisGrid' could be found (are you missing a using directive or an assembly reference?)
+2: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+3: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+4: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+5: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+6: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+8: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+9: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+********************************************************************************
+*                     Friday, December 30, 2016 7:56:16 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-371b1cf1e9a0a1a42b3e3f0e2f5e3f3f 
+Exit code: 0
+Elapsed time: 2.99 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (8 lines):
+0: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+1: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+3: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+4: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+5: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+6: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.14 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:56:19 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-16224d64ec3880f4786fa9c3bf8df4b3 
+Exit code: 0
+Elapsed time: 2.39 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.12 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:56:49 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-4af6e9b41913e024e93c2676301e361c 
+Exit code: 0
+Elapsed time: 3.04 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (8 lines):
+0: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+1: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+3: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+4: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+6: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+7: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.14 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:56:53 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-5fa9fa719eadf2d4ebcd34488419296a 
+Exit code: 0
+Elapsed time: 2.43 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.13 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:58:14 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-37e2437ebfcf0b84cbe20cdb4531f69d 
+Exit code: 0
+Elapsed time: 3.06 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (8 lines):
+0: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+1: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+3: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+4: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+6: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+7: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.13 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 7:58:18 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-69e11d94f243bed45a87d30bd92217e3 
 Exit code: 0
 Elapsed time: 2.37 sec
 
@@ -127,6 +576,72 @@ Elapsed time: 2.37 sec
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor.dll
 Exit code: 0
-Elapsed time: 0.15 sec
+Elapsed time: 0.12 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 8:02:53 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-90ca7f6b1671cc147833777885523bd1 
+Exit code: 0
+Elapsed time: 3.04 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (8 lines):
+0: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+1: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
+3: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+4: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+5: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+6: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
+7: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.14 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                     Friday, December 30, 2016 8:02:57 PM                     *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-ddb67425e3ef7824aad6219bd371cc59 
+Exit code: 0
+Elapsed time: 2.38 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.12 sec
 
 - pdb2mdb.exe output (0 lines):

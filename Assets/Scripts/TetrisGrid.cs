@@ -184,7 +184,7 @@ public class TetrisGrid
         return false;
     }
 
-    List<int> GetFilledLines()
+    List<int> GetFilledRows()
     {
         var indexList = new List<int>();
 
@@ -196,14 +196,85 @@ public class TetrisGrid
         return indexList;
     }
 
-    List<Brick> GetBlocksInLine(int ind)
+    List<Brick> GetBlocksInRow(int row)
     {
-        
+        var brickList = new List<Brick>();
+
+        if (row < 0 || row > Grid.GetLength(0)) return brickList;
+
+        for (int collumn = 0; collumn < Grid.GetLength(1); collumn++)
+        {
+            foreach (var brick in Grid[row, collumn]) 
+                brickList.Add(brick);
+        }
+
+        return brickList;
     }
 
-    List<Brick> GetFilledBlocks()
+    List<Brick> GetFilledRowBlocks()
     {
-        
+        var brickList = new List<Brick>();
+
+        foreach (var rowIndex in GetFilledRows())
+        {
+            brickList.AddRange(GetBlocksInRow(rowIndex));
+        }
+
+        return brickList;
+    }
+
+    void ClearGrid()
+    {
+        var blockList = new List<Brick>();
+
+        for (var i = 0; i < Grid.GetLength(0); i++)
+        {
+            blockList.AddRange(GetBlocksInRow(i));
+        }
+
+        EmptyGridCells();
+
+        ReturnToPool(blockList);
+    }
+
+    void EmptyGridCells()
+    {
+        for (var row = 0; row < Grid.GetLength(0); row++)
+        {
+            for (var collumn = 0; collumn < Grid.GetLength(1); collumn++)
+            {
+                Grid[row, collumn] = Option<Brick>.None;
+            }
+        }
+    }
+
+    public void ClearGame()
+    {
+        ClearGrid();
+
+        foreach (var element in activeGroup)
+        {
+            foreach (var brick in element)
+            {
+                pool.PutBack(brick.gameObject);
+            }
+        }
+
+        activeGroup = new Option<Brick>[activeGroup.Length];
+    }
+
+    public void StartGame()
+    {
+        ClearGame();
+        SetActiveGroup();
+    }
+
+    void ReturnToPool(List<Brick> bricks)
+    {
+        foreach (var brick in bricks)
+        {
+            pool.PutBack(brick.gameObject);
+        }
     }
 
     public bool IsMoveValid(Coordinate cord)

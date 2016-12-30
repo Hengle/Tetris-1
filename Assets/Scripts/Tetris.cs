@@ -19,6 +19,8 @@ public class Tetris : MonoBehaviour
 
     BrickPool instantiatedPool;
 
+    public bool IsPaused { get; private set; }
+
     float lastFall = 0;
     float fallSpeed = 1;
 
@@ -26,42 +28,53 @@ public class Tetris : MonoBehaviour
     void Start () {
         if (!brickPrefab.GetComponent<Brick>()) throw new Exception("Given brickPrefab does not contain Brick script");
 
+        IsPaused = true;
+
         instantiatedPool = Instantiate(pool);
         instantiatedPool.PoolUp(width * height);
 
         tetrisGrid = new TetrisGrid(width,height, groupSize, instantiatedPool);
 
-        tetrisGrid.SetActiveGroup();
     }
 
     // Update is called once per frame
     void Update ()
     {
-        if (Input.GetKey(KeyCode.DownArrow) ||
-                 Time.time - lastFall >= fallSpeed)
+        if (!IsPaused)
         {
-            tetrisGrid.Drop();
-            lastFall = Time.time;
+            if (Input.GetKey(KeyCode.DownArrow) || 
+                Time.time - lastFall >= fallSpeed)
+            {
+                tetrisGrid.Drop();
+                lastFall = Time.time;
+            }
         }
+
     }
 
 
 
 
-    public void Begin() {
-        Debug.Log("Begin match");
+    public void Begin()
+    {
+        tetrisGrid.ClearGame();
+        tetrisGrid.StartGame();
+        IsPaused = false;
     }
 
-    public void Pause() {
-        Debug.Log("Pause match");
+    public void Pause()
+    {
+        IsPaused = true;
     }
 
-    public void Continue() {
-        Debug.Log("Continue match");
+    public void Continue()
+    {
+        IsPaused = false;
     }
 
     public void End() {
         Debug.Log("End match");
+        tetrisGrid.ClearGame();
     }
 
 }

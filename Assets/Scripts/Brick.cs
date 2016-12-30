@@ -7,5 +7,4 @@ public class Brick : MonoBehaviour{
     {
         return new Coordinate(transform.position);
     }
-
 }

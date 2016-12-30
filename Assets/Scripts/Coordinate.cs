@@ -44,4 +44,9 @@ public struct Coordinate : IEquatable<Coordinate> {
     public static Coordinate operator +(Coordinate left, Coordinate right) { return new Coordinate(left.x + right.x, left.y + right.y); }
     public static Coordinate operator -(Coordinate left, Coordinate right) { return new Coordinate(left.x - right.x, left.y - right.y); }
     #endregion
+
+    public Vector2 ToVector2()
+    {
+        return new Vector2(x,y);
+    }
 }

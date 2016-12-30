@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Assets.Scripts;
+using UnityEngine;
 using com.tinylabproductions.TLPLib.Data;
 using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
+using JetBrains.Annotations;
 
 //Tetris grid - supervises the positioning of blocks
 public class TetrisGrid
@@ -11,44 +14,142 @@ public class TetrisGrid
     Option<Brick>[,] Grid;
 
     Option<Brick>[] activeGroup;
+
     Coordinate[,] shape;
 
     Coordinate spawnPoint;
 
-    public TetrisGrid(int width, int height, int groupSize)
-    {
-        size = new Size(width, height);
+    BrickPool pool;
 
-        Grid = new Option<Brick>[width, height];
+    public TetrisGrid(int width, int height, int groupSize, BrickPool pool)
+    {
+        size = new Size(width + 1, height + 1);
+
+        Grid = new Option<Brick>[size.width, size.height];
         InitArray(Grid);
 
         activeGroup = new Option<Brick>[groupSize];
+
         //4 because of 4 rotations
         shape = new Coordinate[groupSize,4];
 
         spawnPoint = new Coordinate((size.width - 4) / 2, size.height - 2);
+
+        this.pool = pool;
+    }
+
+    public bool SetActiveGroup()
+    {
+        var shape = Shapes.RandomShape();
+
+        if (CanAddActiveGroup(shape))
+        {
+            var pooledUp = pool.GetPooled(activeGroup.Length);
+            var tempList = new List<Brick>();
+
+            foreach (var brick in pooledUp)
+            {
+                tempList.Add(brick.GetComponent<Brick>());
+            }
+
+            if (!AddActiveGroup(tempList.ToArray(), shape))
+            {
+                return false;
+            }
+
+            return true;
+        }
+        return false;
+    }
+
+    public bool MoveActive(Coordinate cord)
+    {
+        if (IsMoveValid(cord))
+        {
+            RiseActiveGroup();
+            MoveActiveGroup(cord);
+            return true;
+        }
+        return false;
+    }
+
+    public bool MoveLeft()
+    {
+        return MoveActive(new Coordinate(-1, 0));
+    }
+
+    public bool MoveRight()
+    {
+        return MoveActive(new Coordinate(1,0));
+    }
+
+    public bool Drop()
+    {
+        if (!MoveActive(new Coordinate(0, -1)))
+        {
+            if (!SetActiveGroup())
+            {
+                return false;
+            };
+        }
+        return true;
+    }
+
+    bool MoveActiveGroup(Coordinate to)
+    {
+        foreach (var member in activeGroup)
+        {
+            foreach (var brick in member)
+            {
+                if (!MoveActiveBrick(brick, to + brick.coordinate())) return false;
+            }
+        }
+        return true;
+    }
+
+    bool MoveActiveBrick(Brick brick, Coordinate to)
+    {
+        if (IsPositionValid(to))
+        {
+            Grid[to.x, to.y] = brick.some();
+            brick.transform.position = to.ToVector2();
+            return true;
+        }
+        return false;
+    }
+
+    void RiseActiveGroup()
+    {
+        foreach (var member in activeGroup)
+        {
+            foreach (var brick in member)
+            {
+                RiseFromGrid(brick.coordinate());
+            }
+        }
+    }
+
+    void RiseFromGrid(Coordinate cord)
+    {
+        if (IsPositionValid(cord))
+        {
+            Grid[cord.x,cord.y] = Option<Brick>.None;
+        }
     }
 
 
-    //Adds a single static block to a position on grid
-    //On success - returns Option<block>
-    //On failure - return Option.None
-    public Option<Brick> Add(Option<Brick> block, Coordinate coordinate)
+    void Add(Option<Brick> block, Coordinate coordinate)
     {
         if (IsPositionValid(coordinate)) {
             Grid[coordinate.x, coordinate.y] = block;
             foreach (var value in block)
                 value.transform.position = new Vector2(coordinate.x, coordinate.y);
-
-            return Grid[coordinate.x, coordinate.y];
         }
-
-        return Option<Brick>.None;
     }
 
-    public bool AddActiveGroup(Brick[] blocks, Coordinate[,] shape)
+    bool AddActiveGroup(Brick[] blocks, Coordinate[,] shape)
     {
-        if (blocks.Length == activeGroup.Length && blocks.Length == shape.GetLength(1))
+        if (blocks.Length == activeGroup.Length && blocks.Length == shape.GetLength(0))
         {
             for (var i = 0; i < blocks.Length; i++)
             {
@@ -61,26 +162,81 @@ public class TetrisGrid
         return false;
     }
 
-    //None - if there's no activeGroup
-    //false - if the group can't be moved to the coordinates
-    //true - if the group can be moved
-    public Option<bool> CanActiveGroupMoveTo(Coordinate coordinate)
+    bool CanAddActiveGroup(Coordinate[,] shape)
     {
-        foreach (var brickOption in activeGroup) {
-            if (!brickOption.isSome) return Option<bool>.None;
-
-            foreach (var brick in brickOption)
-            {
-                if (!IsPositionValid(brick.coordinate() + coordinate))
-                    return false.some();
-            }
+        for (var i = 0; i < shape.GetLength(0); i++)
+        {
+            if(!IsPositionValid(GetSpawnZoneCord(shape[0, i]))) return false;
         }
-        return true.some();
+        return true;
     }
 
+    bool IsLineFilled(int ind)
+    {
+        if (ind > 0 && ind < Grid.GetLength(0))
+        {
+            for (int i = 0; i < Grid.GetLength(1); i++)
+            {
+                if (!Grid[ind, i].isSome) return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    List<int> GetFilledLines()
+    {
+        var indexList = new List<int>();
+
+        for (var i = 0; i < Grid.GetLength(0); i++)
+        {
+            if (IsLineFilled(i)) indexList.Add(i);
+        }
+
+        return indexList;
+    }
+
+    List<Brick> GetBlocksInLine(int ind)
+    {
+        
+    }
+
+    List<Brick> GetFilledBlocks()
+    {
+        
+    }
+
+    public bool IsMoveValid(Coordinate cord)
+    {
+        foreach (var member in activeGroup)
+        {
+            foreach (var brick in member)
+            {
+                if (!IsPositionValid(brick.coordinate() + cord)) return false;
+            }
+        }
+        return true;
+    }
 
     public bool IsPositionValid(Coordinate cord) {
-        return IsPositionInGrid(cord) && !IsPositionTaken(cord);
+        if (IsPositionInGrid(cord))
+        {
+            return !IsPositionTaken(cord) || IsTakenByActiveGroupMember(cord);
+        }
+        return false;
+    }
+
+    public bool IsTakenByActiveGroupMember(Coordinate cord)
+    {
+        foreach (var member in activeGroup)
+        {
+            foreach (var brick in member)
+            {
+                if (brick.coordinate() == cord)
+                    return true;
+            }
+        }
+        return false;
     }
 
     public bool IsPositionTaken(Coordinate coordinate)

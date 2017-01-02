@@ -47,10 +47,12 @@ public class TetrisGrid
         {
             var pooledUp = pool.GetPooled(activeGroup.Length);
             var tempList = new List<Brick>();
-
+            var color = Random.ColorHSV();
             foreach (var brick in pooledUp)
             {
                 tempList.Add(brick.GetComponent<Brick>());
+                //Color the brick
+                brick.GetComponent<SpriteRenderer>().color = color;
             }
 
             if (!AddActiveGroup(tempList.ToArray(), shape))

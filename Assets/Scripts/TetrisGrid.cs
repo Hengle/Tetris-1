@@ -279,15 +279,22 @@ public class TetrisGrid
     public int GetPoints(int pointMultiplier)
     {
         var counter = 0;
-        foreach (var rowInd in GetFilledRows())
+        while (GetFilledRows().Count > 0)
         {
+            var lineToClear = GetFilledRows().First();
             counter += size.width;
-            ClearRowFromGrid(rowInd);
-            DropLineAbove(rowInd);
+            ClearRowFromGrid(lineToClear);
+            DropLineAbove(lineToClear);
         }
+        //foreach (var rowInd in GetFilledRows())
+        //{
+        //    counter += 1;
+        //    ClearRowFromGrid(rowInd);
+        //}
         return counter * pointMultiplier;
     }
 
+    
     void DropLineAbove(int row)
     {
         for (var collumnIndex = 0; collumnIndex < Grid.GetLength(0); collumnIndex++)

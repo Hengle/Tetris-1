@@ -19,6 +19,7 @@ public class Tetris : MonoBehaviour
 
     BrickPool instantiatedPool;
 
+    public int points { get; private set; }
     public bool IsPaused { get; private set; }
 
     float lastFall = 0;
@@ -42,10 +43,30 @@ public class Tetris : MonoBehaviour
     {
         if (!IsPaused)
         {
-            if (Input.GetKey(KeyCode.DownArrow) || 
-                Time.time - lastFall >= fallSpeed)
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                tetrisGrid.Drop();
+                tetrisGrid.MoveLeft();
+            }
+
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                tetrisGrid.MoveRight();
+            }
+
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                tetrisGrid.RotateActive();
+            }
+
+            else if (Input.GetKey(KeyCode.DownArrow) ||
+                     Time.time - lastFall >= fallSpeed)
+            {
+                if (!tetrisGrid.Drop())
+                {
+                    Debug.Log("MATCH LOST");    
+                }
+
+                points += tetrisGrid.GetPoints(10);
                 lastFall = Time.time;
             }
         }
@@ -53,11 +74,12 @@ public class Tetris : MonoBehaviour
     }
 
 
+    //I made GetFilledRowBlocks public, so that objects outside of TetrisGrid
+    //Could choose how to process line clearing (animations, point counting, etc.)
 
 
     public void Begin()
     {
-        tetrisGrid.ClearGame();
         tetrisGrid.StartGame();
         IsPaused = false;
     }
@@ -74,7 +96,7 @@ public class Tetris : MonoBehaviour
 
     public void End() {
         Debug.Log("End match");
-        tetrisGrid.ClearGame();
+        tetrisGrid.EndGame();
     }
 
 }

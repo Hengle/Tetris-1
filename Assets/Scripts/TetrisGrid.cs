@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts;
 using UnityEngine;
 using com.tinylabproductions.TLPLib.Data;
@@ -6,7 +7,7 @@ using com.tinylabproductions.TLPLib.Extensions;
 using com.tinylabproductions.TLPLib.Functional;
 using JetBrains.Annotations;
 
-//Tetris grid - supervises the positioning of blocks
+//Tetris grid - supervises the positioning of bricks
 public class TetrisGrid
 {
     Size size;
@@ -14,8 +15,8 @@ public class TetrisGrid
     Option<Brick>[,] Grid;
 
     Option<Brick>[] activeGroup;
-
-    Coordinate[,] shape;
+    Coordinate[,] activeShape;
+    int currentRotation;
 
     Coordinate spawnPoint;
 
@@ -31,7 +32,7 @@ public class TetrisGrid
         activeGroup = new Option<Brick>[groupSize];
 
         //4 because of 4 rotations
-        shape = new Coordinate[groupSize,4];
+        activeShape = new Coordinate[groupSize,4];
 
         spawnPoint = new Coordinate((size.width - 4) / 2, size.height - 2);
 
@@ -60,6 +61,55 @@ public class TetrisGrid
             return true;
         }
         return false;
+    }
+
+    public bool RotateActive() {
+        var futureRotation = currentRotation + 1;
+        var rotationCenter = RotationCenter();
+        if (futureRotation > activeShape.GetLength(0) - 1) futureRotation = 0;
+
+
+        if (ActiveGroupCanRotate(futureRotation))
+        {
+            currentRotation = futureRotation;
+            RiseActiveGroup();
+            for (var i = 0; i < activeShape.GetLength(1); i++) {
+                MoveActiveBrick(activeGroup[i].get, rotationCenter + activeShape[futureRotation, i]);
+            }
+            return true;
+        } 
+
+        return false;
+    }
+
+
+    Coordinate RotationCenter()
+    {
+        //yFloor - because we don't want the active group to "rise"
+        var yFloor = size.height;
+        //xSum - because we want to get the center of the active group
+        var xSum = 0;
+
+        foreach (var element in activeGroup)
+        {
+            foreach (var brick in element)
+            {
+                xSum += brick.coordinate().x;
+                if (yFloor > brick.coordinate().y)
+                    yFloor = brick.coordinate().y;
+            }
+        }
+
+        return new Coordinate(Mathf.Abs(xSum/activeGroup.Length), yFloor);
+    }
+    public bool ActiveGroupCanRotate(int rotationIndex)
+    {
+        if (activeShape.GetLength(1) > activeGroup.Length) return false;
+        for (var i = 0; i < activeShape.GetLength(1); i++)
+        {
+            if(!IsPositionValid(RotationCenter() + activeShape[rotationIndex, i])) return false;
+        }
+        return true;
     }
 
     public bool MoveActive(Coordinate cord)
@@ -138,25 +188,26 @@ public class TetrisGrid
     }
 
 
-    void Add(Option<Brick> block, Coordinate coordinate)
+    void Add(Option<Brick> brick, Coordinate coordinate)
     {
         if (IsPositionValid(coordinate)) {
-            Grid[coordinate.x, coordinate.y] = block;
-            foreach (var value in block)
+            Grid[coordinate.x, coordinate.y] = brick;
+            foreach (var value in brick)
                 value.transform.position = new Vector2(coordinate.x, coordinate.y);
         }
     }
 
-    bool AddActiveGroup(Brick[] blocks, Coordinate[,] shape)
+    bool AddActiveGroup(Brick[] bricks, Coordinate[,] shape)
     {
-        if (blocks.Length == activeGroup.Length && blocks.Length == shape.GetLength(0))
+        if (bricks.Length == activeGroup.Length && bricks.Length == shape.GetLength(0))
         {
-            for (var i = 0; i < blocks.Length; i++)
+            for (var i = 0; i < bricks.Length; i++)
             {
-                activeGroup[i] = blocks[i].some();
+                activeGroup[i] = bricks[i].some();
                 Add(activeGroup[i], GetSpawnZoneCord(shape[0, i]));
             }
-            this.shape = shape;
+            this.activeShape = shape;
+            currentRotation = 0;
             return true;
         }
         return false;
@@ -173,11 +224,11 @@ public class TetrisGrid
 
     bool IsLineFilled(int ind)
     {
-        if (ind > 0 && ind < Grid.GetLength(0))
+        if (ind >= 0 && ind < Grid.GetLength(1))
         {
-            for (int i = 0; i < Grid.GetLength(1); i++)
+            for (int i = 0; i < Grid.GetLength(0); i++)
             {
-                if (!Grid[ind, i].isSome) return false;
+                if (!Grid[i, ind].isSome || activeGroup.Contains(Grid[i,ind])) return false;
             }
             return true;
         }
@@ -188,7 +239,7 @@ public class TetrisGrid
     {
         var indexList = new List<int>();
 
-        for (var i = 0; i < Grid.GetLength(0); i++)
+        for (var i = 0; i < Grid.GetLength(1); i++)
         {
             if (IsLineFilled(i)) indexList.Add(i);
         }
@@ -196,45 +247,101 @@ public class TetrisGrid
         return indexList;
     }
 
-    List<Brick> GetBlocksInRow(int row)
+    List<Brick> GetBricksInRow(int row)
     {
         var brickList = new List<Brick>();
 
-        if (row < 0 || row > Grid.GetLength(0)) return brickList;
+        if (row < 0 || row > Grid.GetLength(1)) return brickList;
 
-        for (int collumn = 0; collumn < Grid.GetLength(1); collumn++)
+        for (int collumn = 0; collumn < Grid.GetLength(0); collumn++)
         {
-            foreach (var brick in Grid[row, collumn]) 
+            foreach (var brick in Grid[collumn, row]) 
                 brickList.Add(brick);
         }
 
         return brickList;
     }
 
-    List<Brick> GetFilledRowBlocks()
+    public List<Brick> GetFilledRowBricks()
     {
         var brickList = new List<Brick>();
 
         foreach (var rowIndex in GetFilledRows())
         {
-            brickList.AddRange(GetBlocksInRow(rowIndex));
+            brickList.AddRange(GetBricksInRow(rowIndex));
         }
 
         return brickList;
     }
 
+    public int GetPoints(int pointMultiplier)
+    {
+        var counter = 0;
+        foreach (var rowInd in GetFilledRows())
+        {
+            counter += size.width;
+            ClearRowFromGrid(rowInd);
+            DropLineAbove(rowInd);
+        }
+        return counter * pointMultiplier;
+    }
+
+    void DropLineAbove(int row)
+    {
+        for (var collumnIndex = 0; collumnIndex < Grid.GetLength(0); collumnIndex++)
+        {
+            for (var rowIndex = row+1; rowIndex < Grid.GetLength(1); rowIndex++)
+            {
+                MoveNormalBrick(new Coordinate(collumnIndex,rowIndex), new Coordinate(collumnIndex,rowIndex - 1));
+            }
+        }
+    }
+
+    void ClearRowFromGrid(int rowInd)
+    {
+        foreach (var brick in GetBricksInRow(rowInd))
+        {
+            Grid[brick.coordinate().x,brick.coordinate().y] = Option<Brick>.None;
+            pool.PutBack(brick.gameObject);
+        }
+    }
+
+    void MoveNormalBrick(Coordinate from, Coordinate to)
+    {
+        if (!IsPositionTaken(to))
+        {
+            var temp = Grid[from.x, from.y];
+            Grid[from.x, from.y] = Option<Brick>.None;
+            Grid[to.x, to.y] = temp;
+
+            foreach (var brick in Grid[to.x, to.y])
+            {
+                brick.transform.position = to.ToVector2();
+            }
+        }
+    }
+
+    bool IsLineCleared(int rowIndex)
+    {
+        for (var i = 0; i < Grid.GetLength(1); i++)
+        {
+            if (Grid[rowIndex, i].isSome) return false;
+        }
+        return true;
+    }
+
     void ClearGrid()
     {
-        var blockList = new List<Brick>();
+        var brickList = new List<Brick>();
 
         for (var i = 0; i < Grid.GetLength(0); i++)
         {
-            blockList.AddRange(GetBlocksInRow(i));
+            brickList.AddRange(GetBricksInRow(i));
         }
 
         EmptyGridCells();
 
-        ReturnToPool(blockList);
+        ReturnToPool(brickList);
     }
 
     void EmptyGridCells()
@@ -248,7 +355,8 @@ public class TetrisGrid
         }
     }
 
-    public void ClearGame()
+    //Clears the grid and active group
+    public void EndGame()
     {
         ClearGrid();
 
@@ -263,9 +371,10 @@ public class TetrisGrid
         activeGroup = new Option<Brick>[activeGroup.Length];
     }
 
+    //Clears the grid and active group + sets new active group
     public void StartGame()
     {
-        ClearGame();
+        EndGame();
         SetActiveGroup();
     }
 
@@ -277,6 +386,7 @@ public class TetrisGrid
         }
     }
 
+    //Checks if a whole move of active group is possible
     public bool IsMoveValid(Coordinate cord)
     {
         foreach (var member in activeGroup)
@@ -289,6 +399,7 @@ public class TetrisGrid
         return true;
     }
 
+    //Checks if a single move to a single brick is possible
     public bool IsPositionValid(Coordinate cord) {
         if (IsPositionInGrid(cord))
         {

@@ -49,4 +49,9 @@ public struct Coordinate : IEquatable<Coordinate> {
     {
         return new Vector2(x,y);
     }
+
+    public override string ToString()
+    {
+        return "X " + x + " Y " + y;
+    }
 }

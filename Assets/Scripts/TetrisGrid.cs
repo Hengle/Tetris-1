@@ -65,7 +65,11 @@ public class TetrisGrid
         return false;
     }
 
-    public bool RotateActive() {
+
+    #region Rotation
+
+    public bool RotateActive()
+    {
         var futureRotation = currentRotation + 1;
         var rotationCenter = RotationCenter();
         if (futureRotation > activeShape.GetLength(0) - 1) futureRotation = 0;
@@ -75,11 +79,12 @@ public class TetrisGrid
         {
             currentRotation = futureRotation;
             RiseActiveGroup();
-            for (var i = 0; i < activeShape.GetLength(1); i++) {
+            for (var i = 0; i < activeShape.GetLength(1); i++)
+            {
                 MoveActiveBrick(activeGroup[i].get, rotationCenter + activeShape[futureRotation, i]);
             }
             return true;
-        } 
+        }
 
         return false;
     }
@@ -102,16 +107,35 @@ public class TetrisGrid
             }
         }
 
-        return new Coordinate(Mathf.Abs(xSum/activeGroup.Length), yFloor);
+        return new Coordinate(Mathf.Abs(xSum / activeGroup.Length), yFloor);
     }
     public bool ActiveGroupCanRotate(int rotationIndex)
     {
         if (activeShape.GetLength(1) > activeGroup.Length) return false;
         for (var i = 0; i < activeShape.GetLength(1); i++)
         {
-            if(!IsPositionValid(RotationCenter() + activeShape[rotationIndex, i])) return false;
+            if (!IsPositionValid(RotationCenter() + activeShape[rotationIndex, i])) return false;
         }
         return true;
+    }
+
+    #endregion
+
+    #region MoveBricks
+
+    void MoveNormalBrick(Coordinate from, Coordinate to)
+    {
+        if (!IsPositionTaken(to))
+        {
+            var temp = Grid[from.x, from.y];
+            Grid[from.x, from.y] = Option<Brick>.None;
+            Grid[to.x, to.y] = temp;
+
+            foreach (var brick in Grid[to.x, to.y])
+            {
+                brick.transform.position = to.ToVector2();
+            }
+        }
     }
 
     public bool MoveActive(Coordinate cord)
@@ -132,7 +156,7 @@ public class TetrisGrid
 
     public bool MoveRight()
     {
-        return MoveActive(new Coordinate(1,0));
+        return MoveActive(new Coordinate(1, 0));
     }
 
     public bool Drop()
@@ -146,7 +170,6 @@ public class TetrisGrid
         }
         return true;
     }
-
     bool MoveActiveGroup(Coordinate to)
     {
         foreach (var member in activeGroup)
@@ -170,6 +193,10 @@ public class TetrisGrid
         return false;
     }
 
+    #endregion
+
+    #region GridRemoval
+
     void RiseActiveGroup()
     {
         foreach (var member in activeGroup)
@@ -185,14 +212,26 @@ public class TetrisGrid
     {
         if (IsPositionValid(cord))
         {
-            Grid[cord.x,cord.y] = Option<Brick>.None;
+            Grid[cord.x, cord.y] = Option<Brick>.None;
         }
     }
 
+    void ClearRowFromGrid(int rowInd)
+    {
+        foreach (var brick in GetBricksInRow(rowInd))
+        {
+            Grid[brick.coordinate().x, brick.coordinate().y] = Option<Brick>.None;
+            pool.PutBack(brick.gameObject);
+        }
+    }
 
+    #endregion
+
+    #region AddSetBricks
     void Add(Option<Brick> brick, Coordinate coordinate)
     {
-        if (IsPositionValid(coordinate)) {
+        if (IsPositionValid(coordinate))
+        {
             Grid[coordinate.x, coordinate.y] = brick;
             foreach (var value in brick)
                 value.transform.position = new Vector2(coordinate.x, coordinate.y);
@@ -219,7 +258,20 @@ public class TetrisGrid
     {
         for (var i = 0; i < shape.GetLength(0); i++)
         {
-            if(!IsPositionValid(GetSpawnZoneCord(shape[0, i]))) return false;
+            if (!IsPositionValid(GetSpawnZoneCord(shape[0, i]))) return false;
+        }
+        return true;
+    }
+
+
+    #endregion
+
+    #region ClearLines
+    bool IsLineClear(int rowIndex)
+    {
+        for (var i = 0; i < Grid.GetLength(1); i++)
+        {
+            if (Grid[rowIndex, i].isSome) return false;
         }
         return true;
     }
@@ -230,7 +282,7 @@ public class TetrisGrid
         {
             for (int i = 0; i < Grid.GetLength(0); i++)
             {
-                if (!Grid[i, ind].isSome || activeGroup.Contains(Grid[i,ind])) return false;
+                if (!Grid[i, ind].isSome || activeGroup.Contains(Grid[i, ind])) return false;
             }
             return true;
         }
@@ -257,7 +309,7 @@ public class TetrisGrid
 
         for (int collumn = 0; collumn < Grid.GetLength(0); collumn++)
         {
-            foreach (var brick in Grid[collumn, row]) 
+            foreach (var brick in Grid[collumn, row])
                 brickList.Add(brick);
         }
 
@@ -294,49 +346,16 @@ public class TetrisGrid
         return counter * pointMultiplier;
     }
 
-    
+
     void DropLineAbove(int row)
     {
         for (var collumnIndex = 0; collumnIndex < Grid.GetLength(0); collumnIndex++)
         {
-            for (var rowIndex = row+1; rowIndex < Grid.GetLength(1); rowIndex++)
+            for (var rowIndex = row + 1; rowIndex < Grid.GetLength(1); rowIndex++)
             {
-                MoveNormalBrick(new Coordinate(collumnIndex,rowIndex), new Coordinate(collumnIndex,rowIndex - 1));
+                MoveNormalBrick(new Coordinate(collumnIndex, rowIndex), new Coordinate(collumnIndex, rowIndex - 1));
             }
         }
-    }
-
-    void ClearRowFromGrid(int rowInd)
-    {
-        foreach (var brick in GetBricksInRow(rowInd))
-        {
-            Grid[brick.coordinate().x,brick.coordinate().y] = Option<Brick>.None;
-            pool.PutBack(brick.gameObject);
-        }
-    }
-
-    void MoveNormalBrick(Coordinate from, Coordinate to)
-    {
-        if (!IsPositionTaken(to))
-        {
-            var temp = Grid[from.x, from.y];
-            Grid[from.x, from.y] = Option<Brick>.None;
-            Grid[to.x, to.y] = temp;
-
-            foreach (var brick in Grid[to.x, to.y])
-            {
-                brick.transform.position = to.ToVector2();
-            }
-        }
-    }
-
-    bool IsLineCleared(int rowIndex)
-    {
-        for (var i = 0; i < Grid.GetLength(1); i++)
-        {
-            if (Grid[rowIndex, i].isSome) return false;
-        }
-        return true;
     }
 
     void ClearGrid()
@@ -364,7 +383,11 @@ public class TetrisGrid
         }
     }
 
-    //Clears the grid and active group
+    #endregion
+
+    #region StartEndGame
+
+
     public void EndGame()
     {
         ClearGrid();
@@ -395,6 +418,10 @@ public class TetrisGrid
         }
     }
 
+    #endregion
+
+    #region ValidityChecks
+
     //Checks if a whole move of active group is possible
     public bool IsMoveValid(Coordinate cord)
     {
@@ -409,7 +436,8 @@ public class TetrisGrid
     }
 
     //Checks if a single move to a single brick is possible
-    public bool IsPositionValid(Coordinate cord) {
+    public bool IsPositionValid(Coordinate cord)
+    {
         if (IsPositionInGrid(cord))
         {
             return !IsPositionTaken(cord) || IsTakenByActiveGroupMember(cord);
@@ -441,10 +469,7 @@ public class TetrisGrid
                 && coordinate.y >= 0 && coordinate.y < size.height);
     }
 
-    Coordinate GetSpawnZoneCord(Coordinate coordinate)
-    {
-        return spawnPoint + coordinate;
-    }
+    #endregion
 
     void InitArray(Option<Brick>[,] array)
     {
@@ -452,9 +477,16 @@ public class TetrisGrid
         {
             for (var j = 0; j < array.GetLength(1); j++)
             {
-                Grid[i,j] = Option<Brick>.None;
+                Grid[i, j] = Option<Brick>.None;
             }
         }
     }
+
+    Coordinate GetSpawnZoneCord(Coordinate coordinate)
+    {
+        return spawnPoint + coordinate;
+    }
+
+
 
 }

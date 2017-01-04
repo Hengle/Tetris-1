@@ -9,6 +9,8 @@ using UnityEngine.Networking.NetworkSystem;
 
 public class Tetris : MonoBehaviour
 {
+    #pragma warning disable 649
+
     [SerializeField] GameObject brickPrefab;
     [SerializeField] TetrisGrid tetrisGrid;
 
@@ -18,6 +20,8 @@ public class Tetris : MonoBehaviour
     List<GameObject> objectPool;
 
     BrickPool instantiatedPool;
+
+    #pragma warning restore 649
 
     public int points { get; private set; }
     public bool IsPaused { get; private set; }
@@ -39,30 +43,26 @@ public class Tetris : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update ()
-    {
-        if (!IsPaused)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
+    void Update () {
+
+        if (!IsPaused) {
+
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 tetrisGrid.MoveLeft();
             }
 
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
+            else if (Input.GetKeyDown(KeyCode.RightArrow)) {
                 tetrisGrid.MoveRight();
             }
 
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
+            else if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 tetrisGrid.RotateActive();
             }
 
             else if (Input.GetKey(KeyCode.DownArrow) ||
-                     Time.time - lastFall >= fallSpeed)
-            {
-                if (!tetrisGrid.Drop())
-                {
+                     Time.time - lastFall >= fallSpeed) {
+
+                if (!tetrisGrid.Drop()) {
                     Debug.Log("MATCH LOST");    
                 }
 
@@ -78,19 +78,16 @@ public class Tetris : MonoBehaviour
     //Could choose how to process line clearing (animations, point counting, etc.)
 
 
-    public void Begin()
-    {
+    public void Begin() {
         tetrisGrid.StartGame();
         IsPaused = false;
     }
 
-    public void Pause()
-    {
+    public void Pause() {
         IsPaused = true;
     }
 
-    public void Continue()
-    {
+    public void Continue() {
         IsPaused = false;
     }
 

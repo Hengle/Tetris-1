@@ -1,5 +1,36 @@
 ********************************************************************************
-*                     Monday, January 02, 2017 9:44:56 PM                      *
+*                    Wednesday, January 04, 2017 6:17:49 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-firstpass.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-52873aa5ce44cfd4ab6c69e6bc0ae284 
+Exit code: 0
+Elapsed time: 3.77 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (2 lines):
+0: Assets\Plugins\Vendor\TLPLib\Extensions\BuildTargetExts.cs(39,14): warning CS0618: 'BuildTarget.WebPlayer' is obsolete: 'WebPlayer has been removed in 5.4'
+1: Assets\Plugins\Vendor\TLPLib\Extensions\BuildTargetExts.cs(40,14): warning CS0618: 'BuildTarget.WebPlayerStreamed' is obsolete: 'WebPlayerStreamed has been removed in 5.4'
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-firstpass.dll
+Exit code: 0
+Elapsed time: 0.27 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:17:56 PM                    *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -11,32 +42,70 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-285507b1998e6c648a9fee92ad11466e 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-7d59b4c37ee7e134781b6f5d0a96100f 
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:18:00 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-0d12341aa56adf341a4a95c40d695fcb 
 Exit code: 0
-Elapsed time: 4.79 sec
+Elapsed time: 3.27 sec
 
 - Compiler output (0 lines):
 
-- Compiler errors (8 lines):
-0: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
-1: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
-2: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
-3: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
-4: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
-5: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
-6: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
-7: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+- Compiler errors (3 lines):
+0: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+1: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
 
 - PDB to MDB conversion --------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp.dll
 Exit code: 0
-Elapsed time: 0.13 sec
+Elapsed time: 0.14 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Monday, January 02, 2017 9:45:02 PM                      *
+*                    Wednesday, January 04, 2017 6:17:56 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor-firstpass.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-7f9cf6a72a9fce342b4309361b3d6853 
+Exit code: 0
+Elapsed time: 3.91 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor-firstpass.dll
+Exit code: 0
+Elapsed time: 0.17 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:18:04 PM                    *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -48,9 +117,9 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-cc338e6e65f56514e89ced9f75eab790 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-71fd5ce4fb82c0a42bd965d9fbb0ade7 
 Exit code: 0
-Elapsed time: 2.16 sec
+Elapsed time: 2.63 sec
 
 - Compiler output (0 lines):
 
@@ -61,11 +130,11 @@ Elapsed time: 2.16 sec
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor.dll
 Exit code: 0
-Elapsed time: 0.11 sec
+Elapsed time: 0.14 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Monday, January 02, 2017 9:46:19 PM                      *
+*                    Wednesday, January 04, 2017 6:18:32 PM                    *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -77,32 +146,27 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-b6cf5b86519e64842be32ca52668d81e 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-c839445ab34337e47b86185eb043d0a0 
 Exit code: 0
-Elapsed time: 2.59 sec
+Elapsed time: 3.21 sec
 
 - Compiler output (0 lines):
 
-- Compiler errors (8 lines):
-0: Assets\Scripts\Tetris.cs(15,26): warning CS0649: Field 'Tetris.width' is never assigned to, and will always have its default value 0
+- Compiler errors (3 lines):
+0: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
 1: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
-2: Assets\Scripts\Tetris.cs(17,32): warning CS0649: Field 'Tetris.pool' is never assigned to, and will always have its default value null
-3: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
-4: Assets\Scripts\Tetris.cs(15,33): warning CS0649: Field 'Tetris.height' is never assigned to, and will always have its default value 0
-5: Assets\Scripts\Tetris.cs(15,41): warning CS0649: Field 'Tetris.groupSize' is never assigned to, and will always have its default value 0
-6: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
-7: Assets\Scripts\Tetris.cs(12,33): warning CS0649: Field 'Tetris.brickPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
 
 - PDB to MDB conversion --------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp.dll
 Exit code: 0
-Elapsed time: 0.12 sec
+Elapsed time: 0.15 sec
 
 - pdb2mdb.exe output (0 lines):
 ********************************************************************************
-*                     Monday, January 02, 2017 9:46:22 PM                      *
+*                    Wednesday, January 04, 2017 6:18:37 PM                    *
 ********************************************************************************
 CSharpCompilerWrapper.exe version: 2.0.0.0
 Platform: Windows
@@ -114,9 +178,9 @@ Compiler: Microsoft C# 6.0
 - Compilation -----------------------------------------------
 
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
-Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-bcae9d71dcb94b44aaa892bc8fd756cb 
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-bfb3124e6cbe19f4099535334c016f03 
 Exit code: 0
-Elapsed time: 2.12 sec
+Elapsed time: 2.56 sec
 
 - Compiler output (0 lines):
 
@@ -127,6 +191,148 @@ Elapsed time: 2.12 sec
 Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
 Arguments: Temp\Assembly-CSharp-Editor.dll
 Exit code: 0
-Elapsed time: 0.11 sec
+Elapsed time: 0.17 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:21:35 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-4106638b442b83f4b87d9e660714781d 
+Exit code: 1
+Elapsed time: 0.90 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (1 line):
+0: Assets\Scripts\Block.cs(18,12): error CS1520: Method must have a return type
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:21:37 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-firstpass.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-e0d8d51160d38824985c1c49efd53782 
+Exit code: 0
+Elapsed time: 4.20 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (2 lines):
+0: Assets\Plugins\Vendor\TLPLib\Extensions\BuildTargetExts.cs(39,14): warning CS0618: 'BuildTarget.WebPlayer' is obsolete: 'WebPlayer has been removed in 5.4'
+1: Assets\Plugins\Vendor\TLPLib\Extensions\BuildTargetExts.cs(40,14): warning CS0618: 'BuildTarget.WebPlayerStreamed' is obsolete: 'WebPlayerStreamed has been removed in 5.4'
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-firstpass.dll
+Exit code: 0
+Elapsed time: 0.22 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:21:43 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-2d275cbd06f69d346a6879a2ba535de2 
+Exit code: 0
+Elapsed time: 4.36 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (3 lines):
+0: Assets\Scripts\BrickPool.cs(9,33): warning CS0649: Field 'BrickPool.brickPrefab' is never assigned to, and will always have its default value null
+1: Assets\Scripts\GameController.cs(13,35): warning CS0649: Field 'GameController.uiControllerPrefab' is never assigned to, and will always have its default value null
+2: Assets\Scripts\GameController.cs(12,29): warning CS0649: Field 'GameController.tetrisPrefab' is never assigned to, and will always have its default value null
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp.dll
+Exit code: 0
+Elapsed time: 0.15 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:21:43 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor-firstpass.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-18c98633ae6500b4facb5b16a4ba27e4 
+Exit code: 0
+Elapsed time: 4.45 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor-firstpass.dll
+Exit code: 0
+Elapsed time: 0.16 sec
+
+- pdb2mdb.exe output (0 lines):
+********************************************************************************
+*                    Wednesday, January 04, 2017 6:21:48 PM                    *
+********************************************************************************
+CSharpCompilerWrapper.exe version: 2.0.0.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Development\GameDev\Tetris
+Unity 'Data' or 'Frameworks' directory: D:/Software/Editor/Data
+Compiler: Microsoft C# 6.0
+
+- Compilation -----------------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\csc.exe
+Arguments: -nostdlib+ -noconfig -nologo -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/mscorlib.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" -r:"D:/Software/Editor/Data\Mono/lib/mono/2.0/System.Xml.dll" @Temp/UnityTempFile-fc3c8459426592046bdfd83eee461327 
+Exit code: 0
+Elapsed time: 2.53 sec
+
+- Compiler output (0 lines):
+
+- Compiler errors (0 lines):
+
+- PDB to MDB conversion --------------------------------------
+
+Process: D:\Development\GameDev\Tetris\CSharp60Support\Roslyn\pdb2mdb.exe
+Arguments: Temp\Assembly-CSharp-Editor.dll
+Exit code: 0
+Elapsed time: 0.16 sec
 
 - pdb2mdb.exe output (0 lines):
